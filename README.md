@@ -1,15 +1,16 @@
 # packer-freebsd
 
-![Version](https://img.shields.io/github/tag/uchida/packer-freebsd.svg?maxAge=2592000)
-[![License](https://img.shields.io/github/license/uchida/packer-freebsd.svg?maxAge=2592000)](https://tldrlegal.com/license/creative-commons-cc0-1.0-universal)
-[![CircleCI](https://img.shields.io/circleci/project/uchida/packer-freebsd.svg?maxAge=2592000)](https://circleci.com/gh/uchida/packer-freebsd)
+![Version](https://img.shields.io/github/tag/stblassitude/packer-freebsd.svg?maxAge=2592000)
+[![License](https://img.shields.io/github/license/stblassitude/packer-freebsd.svg?maxAge=2592000)](https://tldrlegal.com/license/creative-commons-cc0-1.0-universal)
+[![CircleCI](https://img.shields.io/circleci/project/stblassitude/packer-freebsd.svg?maxAge=2592000)](https://circleci.com/gh/stblassitude/packer-freebsd)
 
-packer template to build FreeBSD (with zfsroot) images
+packer template to build FreeBSD (with zfsroot) images, based on the work
+by [uchida/packer-freebsd](https://github.com/uchida/packer-freebsd).
 
-vagrant images are available at [uchida/freebsd](https://atlas.hashicorp.com/uchida/boxes/freebsd).
+vagrant images are available at [stblassitude/freebsd-11](https://atlas.hashicorp.com/stblassitude/boxes/freebsd-11).
 
 ```console
-vagrant init uchida/freebsd; vagrant up
+vagrant init stblassitude/freebsd-11; vagrant up --provider virtualbox
 ```
 
 ## Building Images
@@ -17,7 +18,7 @@ vagrant init uchida/freebsd; vagrant up
 To build images, simply run:
 
 ```console
-$ git clone https://github.com/uchida/packer-freebsd
+$ git clone https://github.com/stblassitude/packer-freebsd
 $ cd packer-freebsd
 $ packer build template.json
 ```
@@ -45,7 +46,7 @@ setup instructions are the following:
   and [generate token](https://atlas.hashicorp.com/settings/tokens).
 4. Create project at [Circle CI](https://circleci.com/add-projects)
 5. Add Atlas environment variables to Circle CI project:
-  
+
   ```console
   $ ATLAS_TOKEN={{ your atlas api token here }}
   $ CIRCLE_USERNAME={{ your circle ci username here }}
@@ -55,7 +56,7 @@ setup instructions are the following:
   $ json="{\"name\":\"ATLAS_TOKEN\",\"value\":\"$ATLAS_TOKEN\"}"
   $ curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d "$json" "$CIRCLE_ENVVARENDPOINT"
   ```
-  
+
 6. Edit circle.yml
 
 ## License
@@ -64,4 +65,3 @@ setup instructions are the following:
 (http://creativecommons.org/publicdomain/zero/1.0/deed)
 
 dedicated to public domain, no rights reserved.
-
