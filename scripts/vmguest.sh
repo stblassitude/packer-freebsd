@@ -2,7 +2,7 @@
 set -ex
 case "$PACKER_BUILDER_TYPE" in
   virtualbox-*)
-    pkg install -y virtualbox-ose-additions
+    pkg install -y virtualbox-ose-additions-nox11
     sysrc vboxnet_enable="YES"
     sysrc vboxguest_enable="YES"
     sysrc vboxservice_enable="YES"

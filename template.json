@@ -1,11 +1,11 @@
 {
   "variables": {
-    "atlas_username": "uchida",
-    "atlas_name": "freebsd",
-    "version": "0.0.0",
+    "atlas_username": "stblassitude",
+    "atlas_name": "freebsd-11",
+    "version": "11.0.20161117",
 
     "iso_url": "http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/11.0/FreeBSD-11.0-RELEASE-amd64-disc1.iso",
-    "iso_checksum": "f954780bfad208b1c06a61b2bede54bff4bae61e4436c977f6f595ecf006108e",
+    "iso_checksum": "08b12f2dc378f7a61b5469219824c74a2f9faef580acc85ffab45365df79872d",
     "iso_checksum_type": "sha256",
     "boot_wait": "60s",
     "disk_size": "16384",
@@ -26,10 +26,10 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
-        "<down><enter><wait>",
-        "dhclient -p /tmp/dhclient.pid -l /tmp/dhclient.lease em0<enter><wait5>",
-        "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig<enter><wait>",
-        "bsdinstall script /tmp/installerconfig; shutdown -r now<enter>"
+        "s<enter><wait>",
+        "cd /tmp && dhclient em0 && ",
+        "fetch http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig && ",
+        "bsdinstall script /tmp/installerconfig; reboot<enter>"
       ],
       "boot_wait": "{{user `boot_wait`}}",
       "disk_size": "{{user `disk_size`}}",

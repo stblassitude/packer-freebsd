@@ -1,4 +1,4 @@
-DISTRIBUTIONS="kernel.txz base.txz lib32.txz"
+DISTRIBUTIONS="kernel.txz base.txz"
 
 for d in ada0 da0 vtbd0; do
   if [ -e "/dev/$d" ]; then
@@ -16,3 +16,5 @@ echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 sysrc sshd_enable="YES"
 interface="`ifconfig -l | cut -d' ' -f1`"
 sysrc ifconfig_$interface="dhcp"
+
+echo 'autoboot_delay="0"' >> /boot/loader.conf
