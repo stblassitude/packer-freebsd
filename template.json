@@ -49,10 +49,10 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
-        "<down><enter><wait>",
-        "dhclient -p /tmp/dhclient.pid -l /tmp/dhclient.lease em0<enter><wait5>",
-        "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig<enter><wait>",
-        "bsdinstall script /tmp/installerconfig; shutdown -r now<enter>"
+        "s<enter><wait>",
+        "cd /tmp && dhclient em0 && ",
+        "fetch http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig && ",
+        "bsdinstall script /tmp/installerconfig; reboot<enter>"
       ],
       "boot_wait": "{{user `boot_wait`}}",
       "disk_size": "{{user `disk_size`}}",
@@ -71,10 +71,10 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
-        "<down><enter><wait>",
-        "dhclient -p /tmp/dhclient.pid -l /tmp/dhclient.lease vtnet0<enter><wait5>",
-        "fetch -o /tmp/installerconfig http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig<enter><wait>",
-        "bsdinstall script /tmp/installerconfig; shutdown -r now<enter>"
+        "s<enter><wait>",
+        "cd /tmp && dhclient em0 && ",
+        "fetch http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig && ",
+        "bsdinstall script /tmp/installerconfig; reboot<enter>"
       ],
       "boot_wait": "{{user `boot_wait`}}",
       "disk_size": "{{user `disk_size`}}",
