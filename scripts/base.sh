@@ -1,5 +1,13 @@
 #!/bin/sh
+
 set -ex
+
+echo HTTP_PROXY=$HTTP_PROXY
+
+cat <<EOF >/root/vagrantbox-version
+${VAGRANTBOX_URL}
+${VAGRANTBOX_VERSION}
+EOF
 
 freebsd-update --not-running-from-cron fetch install || :
 
@@ -17,3 +25,5 @@ EOF
 env ASSUME_ALWAYS_YES=YES pkg bootstrap
 pkg update
 pkg upgrade -y
+
+sysrc sendmail=NONE

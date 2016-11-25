@@ -2,19 +2,20 @@
   "variables": {
     "atlas_username": "stblassitude",
     "atlas_name": "freebsd-11",
-    "version": "11.0.20161120",
+    "version": null,
 
     "iso_url": "http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/11.0/FreeBSD-11.0-RELEASE-amd64-disc1.iso",
     "iso_checksum": "08b12f2dc378f7a61b5469219824c74a2f9faef580acc85ffab45365df79872d",
     "iso_checksum_type": "sha256",
-    "boot_wait": "60s",
+    "boot_wait": "30s",
     "disk_size": "16384",
     "http_directory": "http",
     "ssh_username": "root",
     "ssh_password": "packer",
     "ssh_wait_timeout": "1000s",
     "shutdown_command": "shutdown -p now",
-    "headless": "true"
+    "headless": "true",
+    "HTTP_PROXY": "{{env `HTTP_PROXY`}}"
   },
   "builders": [
     {
@@ -27,12 +28,13 @@
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
         "s<enter><wait>",
-        "cd /tmp && dhclient em0 && ",
+        "cd /tmp && dhclient em0<enter>",
         "fetch http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig && ",
         "bsdinstall script /tmp/installerconfig; reboot<enter>"
       ],
       "boot_wait": "{{user `boot_wait`}}",
       "disk_size": "{{user `disk_size`}}",
+      "guest_additions_mode": "disable",
       "http_directory": "http",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -71,12 +73,13 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
-        "s<enter><wait>",
-        "cd /tmp && dhclient em0 && ",
+        "<enter><wait10><wait10><wait10><wait10>",
+        "s<enter>",
+        "cd /tmp && dhclient vtnet0 && ",
         "fetch http://{{ .HTTPIP }}:{{ .HTTPPort }}/installerconfig && ",
         "bsdinstall script /tmp/installerconfig; reboot<enter>"
       ],
-      "boot_wait": "{{user `boot_wait`}}",
+      "boot_wait": "10s",
       "disk_size": "{{user `disk_size`}}",
       "http_directory": "http",
       "ssh_username": "{{user `ssh_username`}}",
@@ -92,6 +95,11 @@
       "scripts": [
         "scripts/base.sh",
         "scripts/vagrant.sh"
+      ],
+      "environment_vars": [
+        "HTTP_PROXY={{user `HTTP_PROXY`}}",
+        "VAGRANTBOX_URL=https://atlas.hashicorp.com/stblassitude/boxes/freebsd-11",
+        "VAGRANTBOX_VERSION={{user `version`}}"
       ],
       "execute_command": "chmod +x {{ .Path }}; /bin/sh -c '{{ .Vars }} {{ .Path }}'"
     },
@@ -126,7 +134,8 @@
         "artifact_type": "vagrant.box",
         "metadata": {
           "provider": "vmware_desktop",
-          "version": "{{user `version`}}"
+          "version": "{{user `version`}}",
+          "description": "FreeBSD 11.0 amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
         }
       },
       {
@@ -138,7 +147,8 @@
         "artifact_type": "vagrant.box",
         "metadata": {
           "provider": "libvirt",
-          "version": "{{user `version`}}"
+          "version": "{{user `version`}}",
+          "description": "FreeBSD 11.0 amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
         }
       },
       {
@@ -150,7 +160,8 @@
         "artifact_type": "vagrant.box",
         "metadata": {
           "provider": "virtualbox",
-          "version": "{{user `version`}}"
+          "version": "{{user `version`}}",
+          "description": "FreeBSD 11.0 amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
         }
       }
     ]

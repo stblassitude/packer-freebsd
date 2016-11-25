@@ -2,7 +2,7 @@
 set -ex
 pkg autoremove -y
 pkg clean -y
-rm -f /root/VBoxGuestAdditions.iso
+rm -f /root/VBoxGuestAdditions.iso || true
 sed -i '' -e '/^PermitRootLogin/d' /etc/ssh/sshd_config
 rm -rf /var/db/freebsd-update/files
 mkdir /var/db/freebsd-update/files
