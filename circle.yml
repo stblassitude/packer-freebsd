@@ -36,7 +36,7 @@ test:
     - find scripts -name '*.sh' -print0 | xargs -0 sh -n
     - cp vagrantfile.template Vagrantfile
     - vagrant version
-    - packer validate template.json
+    - packer validate freebsd-11.json
 
 deployment:
   release:
