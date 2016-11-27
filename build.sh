@@ -7,12 +7,23 @@ ONLY="${ONLY}${ONLY:+,}virtualbox-iso"
 #ONLY="${ONLY}${ONLY:+,}vmware-iso"
 #ONLY="${ONLY}${ONLY:+,}qemu"
 
-VERSION="11.0.$(date '+%Y%m%d')"
-DATE="$(date '+%Y-%m-%d')"
+function build() {
+  FREEBSD=$1
+  FREEBSD_VERSION=$2
+  VERSION="${FREEBSD_VERSION}.$(date '+%Y%m%d')"
+  DATE="$(date '+%Y-%m-%d')"
 
-set -x
-packer build -only "${ONLY}" \
-  -var "version=${VERSION}" \
-  -var "date=${DATE}" \
-  -var "HTTP_PROXY=${BOX_HTTP_PROXY}" \
-  freebsd-11.json
+  set -x
+  packer build -only "${ONLY}" \
+    -var "freebsd_rel=${FREEBSD}" \
+    -var "freebsd_version=${FREEBSD_VERSION}" \
+    -var "version=${VERSION}" \
+    -var "date=${DATE}" \
+    -var "HTTP_PROXY=${BOX_HTTP_PROXY}" \
+    -var-file "freebsd-${FREEBSD}-vars.json" \
+    template.json
+}
+
+build 10 10.3
+
+build 11 11.0

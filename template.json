@@ -4,8 +4,8 @@
     "atlas_name": "freebsd-11",
     "version": null,
 
-    "iso_url": "http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/11.0/FreeBSD-11.0-RELEASE-amd64-disc1.iso",
-    "iso_checksum": "08b12f2dc378f7a61b5469219824c74a2f9faef580acc85ffab45365df79872d",
+    "iso_url": null,
+    "iso_checksum": null,
     "iso_checksum_type": "sha256",
     "boot_wait": "30s",
     "disk_size": "16384",
@@ -15,7 +15,9 @@
     "ssh_wait_timeout": "1000s",
     "shutdown_command": "shutdown -p now",
     "headless": "true",
-    "HTTP_PROXY": "{{env `HTTP_PROXY`}}"
+    "HTTP_PROXY": "{{env `HTTP_PROXY`}}",
+    "freebsd_rel": "11",
+    "freebsd_version": "11.0"
   },
   "builders": [
     {
@@ -98,7 +100,7 @@
       ],
       "environment_vars": [
         "HTTP_PROXY={{user `HTTP_PROXY`}}",
-        "VAGRANTBOX_URL=https://atlas.hashicorp.com/stblassitude/boxes/freebsd-11",
+        "VAGRANTBOX_URL=https://atlas.hashicorp.com/stblassitude/boxes/freebsd-{{user `freebsd_rel`}}",
         "VAGRANTBOX_VERSION={{user `version`}}"
       ],
       "execute_command": "chmod +x {{ .Path }}; /bin/sh -c '{{ .Vars }} {{ .Path }}'"
@@ -135,7 +137,7 @@
         "metadata": {
           "provider": "vmware_desktop",
           "version": "{{user `version`}}",
-          "description": "FreeBSD 11.0 amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
+          "description": "FreeBSD {{user `freebsd_version`}} amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
         }
       },
       {
@@ -148,7 +150,7 @@
         "metadata": {
           "provider": "libvirt",
           "version": "{{user `version`}}",
-          "description": "FreeBSD 11.0 amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
+          "description": "FreeBSD {{user `freebsd_version`}} amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
         }
       },
       {
@@ -161,7 +163,7 @@
         "metadata": {
           "provider": "virtualbox",
           "version": "{{user `version`}}",
-          "description": "FreeBSD 11.0 amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
+          "description": "FreeBSD {{user `freebsd_version`}} amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
         }
       }
     ]

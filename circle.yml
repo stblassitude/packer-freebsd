@@ -36,7 +36,7 @@ test:
     - find scripts -name '*.sh' -print0 | xargs -0 sh -n
     - cp vagrantfile.template Vagrantfile
     - vagrant version
-    - packer validate -var 'version=11.0.0' freebsd-11.json
+    - packer validate -var freebsd_rel=11 -var freebsd_version=11.0 -var version=11.0.20161127 -var date=2016-11-27 -var HTTP_PROXY=http://diesel.lassitu.de:80 -var-file freebsd-11-vars.json freebsd-11.json
 
 deployment:
   release:
