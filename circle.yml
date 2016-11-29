@@ -1,8 +1,8 @@
 machine:
   environment:
     PATH: "${HOME}/bin:/${HOME}/vagrant/bin:${PATH}"
-    PACKER_URL: "https://releases.hashicorp.com/packer/0.10.0/packer_0.10.0_linux_amd64.zip"
-    PACKER_SHA256SUM: "eadd33bc0f8fa42034059fc1cda5f43ed6f540746e767480f0706ebed49b45e5"
+    PACKER_URL: "https://releases.hashicorp.com/packer/0.12.0/packer_0.12.0_linux_amd64.zip"
+    PACKER_SHA256SUM: "ce6362d527ba697e40b8c90a98d2034b7749e2357fa238b08536aed44f037073"
     VAGRANT_URL: "https://releases.hashicorp.com/vagrant/1.8.6/vagrant_1.8.6_x86_64.deb"
     VAGRANT_SHA256SUM: "e6d83b6b43ad16475cb5cfcabe7dc798002147c1d048a7b6178032084c7070da"
 
