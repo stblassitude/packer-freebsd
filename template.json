@@ -1,14 +1,14 @@
 {
   "variables": {
     "atlas_username": "stblassitude",
-    "atlas_name": "freebsd-11",
+    "atlas_name": "freebsd",
     "version": null,
 
     "iso_url": null,
     "iso_checksum": null,
     "iso_checksum_type": "sha256",
     "boot_wait": "30s",
-    "disk_size": "16384",
+    "disk_size": "4096",
     "http_directory": "http",
     "ssh_username": "root",
     "ssh_password": "packer",
@@ -37,6 +37,9 @@
       "boot_wait": "{{user `boot_wait`}}",
       "disk_size": "{{user `disk_size`}}",
       "guest_additions_mode": "disable",
+      "hard_drive_discard": "false",
+      "hard_drive_interface": "sata",
+      "hard_drive_nonrotational": "false",
       "http_directory": "http",
       "ssh_username": "{{user `ssh_username`}}",
       "ssh_password": "{{user `ssh_password`}}",
@@ -116,7 +119,10 @@
     },
     {
       "type": "shell",
-      "script": "scripts/cleanup.sh",
+      "scripts": [
+        "scripts/cleanup.sh",
+        "scripts/zerodisk.sh"
+      ],
       "execute_command": "chmod +x {{ .Path }}; /bin/sh -c '{{ .Vars }} {{ .Path }}'"
     }
   ],

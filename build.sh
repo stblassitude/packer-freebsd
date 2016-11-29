@@ -13,7 +13,7 @@ function build() {
   VERSION="${FREEBSD_VERSION}.$(date '+%Y%m%d')"
   DATE="$(date '+%Y-%m-%d')"
 
-  set -x
+
   packer build -only "${ONLY}" \
     -var "freebsd_rel=${FREEBSD}" \
     -var "freebsd_version=${FREEBSD_VERSION}" \
@@ -23,6 +23,8 @@ function build() {
     -var-file "freebsd-${FREEBSD}-vars.json" \
     template.json
 }
+
+set -ex
 
 build 10 10.3
 

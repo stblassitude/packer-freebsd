@@ -1,4 +1,5 @@
 {
+  "atlas_name": "freebsd-10",
   "iso_url": "http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/10.3/FreeBSD-10.3-RELEASE-amd64-disc1.iso",
   "iso_checksum": "fef068cf6dea26923ab84b62ba9f21461ca0bdec90a0741c8ffb0e1ca29e410d"
 }
