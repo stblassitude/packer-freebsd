@@ -8,8 +8,10 @@ packer template to build FreeBSD (with zfsroot) images, based on the work
 by [uchida/packer-freebsd](https://github.com/uchida/packer-freebsd).
 
 Vagrant images are available at
-- [atlas.hashicorp.com/stblassitude/freebsd-10](https://atlas.hashicorp.com/stblassitude/boxes/freebsd-10).
-- [atlas.hashicorp.com/stblassitude/freebsd-11](https://atlas.hashicorp.com/stblassitude/boxes/freebsd-11).
+- [atlas.hashicorp.com/stblassitude/freebsd-10](https://atlas.hashicorp.com/stblassitude/boxes/freebsd-10)
+  (about 210 MB)
+- [atlas.hashicorp.com/stblassitude/freebsd-11](https://atlas.hashicorp.com/stblassitude/boxes/freebsd-11)
+  (about 260 MB)
 
 ```console
 vagrant init stblassitude/freebsd-11; vagrant up
