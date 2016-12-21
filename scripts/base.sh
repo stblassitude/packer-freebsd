@@ -9,7 +9,9 @@ ${VAGRANTBOX_URL}
 ${VAGRANTBOX_VERSION}
 EOF
 
-freebsd-update --not-running-from-cron fetch install || :
+sed -i '' -e 's#^ServerName .*$#ServerName update.freebsd.org#' /etc/freebsd-update.conf
+
+freebsd-update -v debug --not-running-from-cron fetch install
 
 mkdir -p /usr/local/etc/pkg/repos
 cat <<'EOF' >/usr/local/etc/pkg/repos/FreeBSD-latest.conf
