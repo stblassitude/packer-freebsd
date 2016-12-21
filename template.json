@@ -7,14 +7,14 @@
     "iso_url": null,
     "iso_checksum": null,
     "iso_checksum_type": "sha256",
-    "boot_wait": "30s",
+    "boot_wait": "300s",
     "disk_size": "4096",
     "http_directory": "http",
     "ssh_username": "root",
     "ssh_password": "packer",
     "ssh_wait_timeout": "1000s",
     "shutdown_command": "shutdown -p now",
-    "headless": "true",
+    "headless": "false",
     "HTTP_PROXY": "{{env `HTTP_PROXY`}}",
     "freebsd_rel": "11",
     "freebsd_version": "11.0"
@@ -43,6 +43,14 @@
       "ssh_password": "{{user `ssh_password`}}",
       "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
       "shutdown_command": "{{user `shutdown_command`}}",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--firmware", "efi"],
+        ["modifyvm", "{{.Name}}", "--chipset", "ich9"],
+        ["modifyvm", "{{.Name}}", "--boot1", "dvd"],
+        ["modifyvm", "{{.Name}}", "--boot2", "disk"],
+        ["modifyvm", "{{.Name}}", "--pae", "off"],
+        ["modifyvm", "{{.Name}}", "--rtcuseutc", "on"]
+      ],
       "headless": "{{user `headless`}}"
     },
     {
