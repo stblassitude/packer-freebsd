@@ -4,6 +4,10 @@ set -ex
 
 echo HTTP_PROXY=$HTTP_PROXY
 
+if [ -z "$HTTP_PROXY"]; then
+  unset HTTP_PROXY
+fi
+
 cat <<EOF >/root/vagrantbox-version
 ${VAGRANTBOX_URL}
 ${VAGRANTBOX_VERSION}
