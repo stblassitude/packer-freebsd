@@ -4,7 +4,7 @@ set -ex
 
 echo HTTP_PROXY=$HTTP_PROXY
 
-if [ -z "$HTTP_PROXY"]; then
+if [ -z "$HTTP_PROXY" ]; then
   unset HTTP_PROXY
 fi
 
@@ -12,6 +12,12 @@ cat <<EOF >/root/vagrantbox-version
 ${VAGRANTBOX_URL}
 ${VAGRANTBOX_VERSION}
 EOF
+
+cat >>/etc/fstab <<EOF
+proc    /proc   procfs  rw  0 0
+fdesc   /dev/fd fdescfs rw  0 0
+EOF
+mount -a
 
 sed -i '' -e 's#^ServerName .*$#ServerName update.freebsd.org#' /etc/freebsd-update.conf
 
