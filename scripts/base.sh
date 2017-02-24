@@ -30,7 +30,8 @@ FreeBSD-latest: {
   mirror_type: "srv",
   signature_type: "fingerprints",
   fingerprints: "/usr/share/keys/pkg",
-  enabled: yes
+  enabled: yes,
+  priority: 200
 }
 EOF
 
