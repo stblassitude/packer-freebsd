@@ -135,43 +135,13 @@
         "keep_input_artifact": false
       },
       {
-        "type": "atlas",
-        "only": [
-          "vmware-iso"
-        ],
-        "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
-        "artifact_type": "vagrant.box",
-        "metadata": {
-          "provider": "vmware_desktop",
-          "version": "{{user `version`}}",
-          "description": "FreeBSD {{user `freebsd_version`}} amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
-        }
-      },
-      {
-        "type": "atlas",
-        "only": [
-          "qemu"
-        ],
-        "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
-        "artifact_type": "vagrant.box",
-        "metadata": {
-          "provider": "libvirt",
-          "version": "{{user `version`}}",
-          "description": "FreeBSD {{user `freebsd_version`}} amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
-        }
-      },
-      {
-        "type": "atlas",
+        "type": "vagrant-cloud",
         "only": [
           "virtualbox-iso"
         ],
-        "artifact": "{{user `atlas_username`}}/{{user `atlas_name`}}",
-        "artifact_type": "vagrant.box",
-        "metadata": {
-          "provider": "virtualbox",
-          "version": "{{user `version`}}",
-          "description": "FreeBSD {{user `freebsd_version`}} amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
-        }
+        "box_tag": "{{user `atlas_username`}}/{{user `atlas_name`}}",
+        "version": "{{user `version`}}",
+        "version_description": "FreeBSD {{user `freebsd_version`}} amd64 image with freebsd-update(8) applied as of {{user `date`}}.  See https://github.com/stblassitude/packer-freebsd"
       }
     ]
   ],

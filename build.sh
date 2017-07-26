@@ -26,7 +26,7 @@ function build() {
 set -ex
 
 if [ $# -le 0 ]; then
-  set -- 10.3 11.0
+  set -- 10.3 11.1
 fi
 
 for i in $*; do

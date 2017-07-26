@@ -21,7 +21,7 @@ mount -a
 
 sed -i '' -e 's#^ServerName .*$#ServerName update.freebsd.org#' /etc/freebsd-update.conf
 
-freebsd-update -v debug --not-running-from-cron fetch install
+freebsd-update -v debug --not-running-from-cron fetch install || true
 
 mkdir -p /usr/local/etc/pkg/repos
 cat <<'EOF' >/usr/local/etc/pkg/repos/FreeBSD-latest.conf
