@@ -8,6 +8,9 @@ if [ -z "$HTTP_PROXY" ]; then
   unset HTTP_PROXY
 fi
 
+hostname ${VAGRANTBOX_NAME}.vagrantup.com
+sysrc hostname=$(hostname)
+
 cat <<EOF >/root/vagrantbox-version
 ${VAGRANTBOX_URL}
 ${VAGRANTBOX_VERSION}
