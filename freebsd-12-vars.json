@@ -1,5 +1,5 @@
 {
   "atlas_name": "freebsd-12",
-  "iso_url": "http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/12.0/FreeBSD-12.0-RC2-amd64-disc1.iso",
-  "iso_checksum": "c2cbca2fb589b1d0ff65898b5858d28411edc74e6a7a0cfdd53f4fc9173a1a9f"
+  "iso_url": "http://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/12.0/FreeBSD-12.0-RC3-amd64-disc1.iso",
+  "iso_checksum": "f98fd2dacf824d59bed5e06cbccb708e01b46bb3c4dfd54c9274ceaf9b3ebb6c"
 }
