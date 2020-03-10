@@ -10,7 +10,7 @@ ONLY="${ONLY}${ONLY:+,}virtualbox-iso"
 function build() {
   FREEBSD_VERSION=$1
   FREEBSD="$(echo "${FREEBSD_VERSION}" | sed -e 's#\..*$##')"
-  VERSION="${FREEBSD_VERSION}.$(date '+%Y%m%d')"
+  VERSION="${FREEBSD}.$(date '+%Y%m%d')"
   DATE="$(date '+%Y-%m-%d')"
 
   packer build -only "${ONLY}" \
@@ -26,7 +26,7 @@ function build() {
 set -ex
 
 if [ $# -le 0 ]; then
-  set -- 11.2 12.0
+  set -- 11.3 12.1
 fi
 
 for i in $*; do
