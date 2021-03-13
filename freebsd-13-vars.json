@@ -1,5 +1,5 @@
 {
   "atlas_name": "freebsd-13",
-  "iso_url": "https://download.freebsd.org/ftp/releases/ISO-IMAGES/13.0/FreeBSD-13.0-RC1-amd64-disc1.iso",
-  "iso_checksum": "2f078f655c46a3640af0a6b0f130ea872e4d284ef8cf3f347f0cc8393529a38e"
+  "iso_url": "https://download.freebsd.org/ftp/releases/ISO-IMAGES/13.0/FreeBSD-13.0-RC2-amd64-disc1.iso",
+  "iso_checksum": "ab244a85e7acbadd5ea609934809f549302e911a68d6abfb784e4b83a6905cef"
 }
