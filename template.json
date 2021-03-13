@@ -6,7 +6,6 @@
 
     "iso_url": null,
     "iso_checksum": null,
-    "iso_checksum_type": "sha256",
     "boot_wait": "30s",
     "disk_size": "4096",
     "http_directory": "http",
@@ -27,7 +26,6 @@
       "vm_name": "{{user `atlas_name`}}",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
         "s<enter><wait>",
         "cd /tmp && dhclient em0<enter>",
@@ -55,7 +53,6 @@
       "vm_name": "{{user `atlas_name`}}",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
         "s<enter><wait>",
         "cd /tmp && dhclient em0 && ",
@@ -77,7 +74,6 @@
       "vm_name": "{{user `atlas_name`}}",
       "iso_url": "{{user `iso_url`}}",
       "iso_checksum": "{{user `iso_checksum`}}",
-      "iso_checksum_type": "{{user `iso_checksum_type`}}",
       "boot_command": [
         "<enter><wait10><wait10><wait10><wait10>",
         "s<enter>",
